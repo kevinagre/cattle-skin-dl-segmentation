@@ -17,7 +17,7 @@ workflow on your own data. No experimental dataset is shipped; see
 1. **Clone the repository** and create a Python environment (Python ≥ 3.10).
 
     ```bash
-    git clone https://github.com/kevinagre/cattle-skin-dl-segmentation.git
+    git clone https://github.com/csantosvet/cattle-skin-dl-segmentation.git
     cd cattle-skin-dl-segmentation
     python -m venv .venv
     .venv\Scripts\activate           # Windows
@@ -105,7 +105,7 @@ cattle-skin-dl-segmentation/
 Pre-trained 2.5D U-Net models for hair and sweat-gland segmentation are
 distributed as Dragonfly Deep Learning Tool exports (ZIP archives) and
 attached to the **`v1.1.0` GitHub Release**. Download them from the
-[Releases page](https://github.com/kevinagre/cattle-skin-dl-segmentation/releases/tag/v1.1.0).
+[Releases page](https://github.com/csantosvet/cattle-skin-dl-segmentation/releases/tag/v1.1.0).
 
 | Asset                                                        | Segments     | Size   |
 | ------------------------------------------------------------ | ------------ | ------ |

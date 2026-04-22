@@ -11,7 +11,7 @@ This protocol describes how to use Dragonfly's **AI Segmentation Wizard** to sem
 Pre-trained 2.5D U-Net models for **hair** (`HAIR_SegWiz_Standard_v1`) and
 **sweat glands** (`SG_SegWiz_Standard_v1`) are distributed as Dragonfly
 **Deep Learning Tool** exports (ZIP archives) attached to the
-[`v1.1.0` GitHub Release](https://github.com/kevinagre/cattle-skin-dl-segmentation/releases/tag/v1.1.0).
+[`v1.1.0` GitHub Release](https://github.com/csantosvet/cattle-skin-dl-segmentation/releases/tag/v1.1.0).
 If you only need to apply the models to new samples — not retrain them —
 start here.
 

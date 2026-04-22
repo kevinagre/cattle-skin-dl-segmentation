@@ -13,7 +13,7 @@ authors:
   - alias: Camila Santos Rojas
 version: 1.1.0
 date-released: 2026-04-22
-repository-code: "https://github.com/kevinagre/cattle-skin-dl-segmentation"
+repository-code: "https://github.com/csantosvet/cattle-skin-dl-segmentation"
 license: MIT
 type: software
 keywords:
