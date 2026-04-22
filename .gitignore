@@ -42,3 +42,8 @@ desktop.ini
 # Local overrides
 *.local
 *.bak
+
+# Release staging area (DL-model ZIPs uploaded as GitHub Release assets, not committed)
+release_assets/
+*.zip
+

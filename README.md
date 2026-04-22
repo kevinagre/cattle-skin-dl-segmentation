@@ -100,6 +100,53 @@ cattle-skin-dl-segmentation/
     └── README.md                 # Data policy and project layout
 ```
 
+## Trained models
+
+Pre-trained 2.5D U-Net models for hair and sweat-gland segmentation are
+distributed as Dragonfly Deep Learning Tool exports (ZIP archives) and
+attached to the **`v1.1.0` GitHub Release**. Download them from the
+[Releases page](https://github.com/kevinagre/cattle-skin-dl-segmentation/releases/tag/v1.1.0).
+
+| Asset                                                        | Segments     | Size   |
+| ------------------------------------------------------------ | ------------ | ------ |
+| `HAIR_SegWiz_Standard_v1_<uuid>.zip`                         | Hair follicles | ~78 MB |
+| `SG_SegWiz_Standard_v1_<uuid>.zip`                           | Sweat glands   | ~78 MB |
+
+Blood-vessel segmentation is performed manually; no DL model ships for
+blood vessels in this release.
+
+### Importing a model ZIP into Dragonfly
+
+The ZIPs are Dragonfly **Deep Learning Tool** exports. Import them once per
+workstation; after import, the models are also available inside the
+**Segmentation Wizard** without any further action.
+
+1. Open Dragonfly 2024.1 or later.
+2. From the menu bar, choose **Artificial Intelligence → Deep Learning Tool**.
+3. In the **Model Overview** panel, click **Import Zip** and select the
+   downloaded `.zip` file. Repeat for the second model.
+4. The imported models now appear in the Model Overview list with their
+   type (semantic segmentation) and class count. You can preview them from
+   the Deep Learning Tool directly, or use them from the Segmentation
+   Wizard via **Start with Model** as described in
+   [`protocols/03_AI_Segmentation_Wizard_Automation.md`](protocols/03_AI_Segmentation_Wizard_Automation.md).
+
+### Applicability and expected behavior
+
+These models were trained on bovine skin biopsies scanned on a Zeiss Xradia
+Versa system at **0.00784727 mm isotropic voxel size** inside a **2 mm
+cylinder mask**. When applied to new samples:
+
+- Expected to work best on samples whose gray-value distribution overlaps
+  the training envelope. Out-of-distribution samples (very different
+  intensity range) may fail completely; see Protocol 03 Part E for the
+  failure modes and the `scripts/normalize_volume.py` calibration option.
+- The operator is expected to review every prediction and run Connected
+  Components cleanup (Protocol 02) before measurement.
+- For cohorts that differ substantially in scanner settings, sample
+  preparation, or species, fine-tuning on 2–3 locally segmented samples is
+  recommended (see Protocol 03 Part B).
+
 ## Software requirements
 
 - **Dragonfly** 2024.1 or later (external; required for all segmentation

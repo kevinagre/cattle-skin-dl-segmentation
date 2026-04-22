@@ -6,6 +6,68 @@ This protocol describes how to use Dragonfly's **AI Segmentation Wizard** to sem
 
 ---
 
+## Quick Start — Using the Published Models
+
+Pre-trained 2.5D U-Net models for **hair** (`HAIR_SegWiz_Standard_v1`) and
+**sweat glands** (`SG_SegWiz_Standard_v1`) are distributed as Dragonfly
+**Deep Learning Tool** exports (ZIP archives) attached to the
+[`v1.1.0` GitHub Release](https://github.com/kevinagre/cattle-skin-dl-segmentation/releases/tag/v1.1.0).
+If you only need to apply the models to new samples — not retrain them —
+start here.
+
+### Importing the ZIPs
+
+1. Download `HAIR_SegWiz_Standard_v1_<uuid>.zip` and
+   `SG_SegWiz_Standard_v1_<uuid>.zip` from the Release page.
+2. Open Dragonfly 2024.1 or later.
+3. From the menu bar, choose **Artificial Intelligence → Deep Learning Tool**.
+4. In the **Model Overview** panel, click **Import Zip** and select a
+   downloaded `.zip` file. Repeat for the second model.
+5. Both models now appear in the Model Overview list as semantic
+   segmentation models. Close the Deep Learning Tool.
+
+Imported models are stored in Dragonfly's Deep Trainer folder (typically
+`%LocalAppData%\ORS\Dragonfly2025.1\Deep Learning\...`) and are
+automatically available inside the Segmentation Wizard after import.
+
+### Applying a published model to a new sample
+
+1. Follow Protocol 02 Part A to import the TIFF reconstruction, correct
+   voxel spacing, align the sample, and apply the 2 mm cylinder mask.
+2. Right-click the cylinder-masked volume in **Data Properties and Settings**
+   → **Segmentation Wizard**.
+3. In **Model Selection**, pick the published Hair or SG model → **Start
+   with Model**.
+4. Click **Predict** to run inference on the full sample.
+5. Review the prediction in the main workspace, clean it up as described in
+   Protocol 02 (Process Islands, Connected Components, manual erasures as
+   needed), then measure and export the Multi-ROIs.
+6. Repeat for the other structure. Segment blood vessels manually
+   (Protocol 02 Part D); no DL model ships for blood vessels in this release.
+
+### Training-envelope notes
+
+The published models were trained on bovine skin biopsies scanned on a
+Zeiss Xradia Versa system at **0.00784727 mm isotropic voxel size** inside
+a **2 mm cylinder mask**. When you apply them to new samples:
+
+- Samples whose gray-value distribution falls inside the training envelope
+  should produce clean predictions with little manual cleanup.
+- Samples whose gray-value lower bound falls far above the training
+  distribution can trigger complete model failure (out-of-distribution).
+  Use `scripts/normalize_volume.py` to match the new volume's
+  tissue-intensity distribution to a reference, or fall back to manual
+  segmentation for that sample (see Part E of this protocol).
+- For cohorts that differ substantially in scanner settings, sample
+  preparation, or species, fine-tune on 2–3 locally segmented samples
+  (Part B) rather than relying on the published models as-is.
+
+The remainder of this protocol covers **training your own models from
+scratch** (or fine-tuning the published ones). If you only need to apply
+the shipped models, the steps above are sufficient.
+
+---
+
 ## How It Works (In a Nutshell)
 
 1. **Training data**
