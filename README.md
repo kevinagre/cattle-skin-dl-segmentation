@@ -19,8 +19,7 @@ bovine skin biopsy (sample 22-10), rendered in Dragonfly:
 
 ![Sweat-gland network fly-through (DL-segmented, Dragonfly 3D render)](docs/media/sweatgland_preview.gif)
 
-Full-biopsy segmentation output on sample 23-120 — hair follicles (multi-
-coloured), sweat-gland coil (purple, lower), and blood-vessel tree (purple,
+Full-biopsy segmentation output on sample 23-120 — hair follicles (gray, on top), sweat-gland coil (multi-colored), and blood-vessel tree (purple,
 branching) — shown overlaid on the μCT tissue cylinder (left) and isolated
 (right):
 
