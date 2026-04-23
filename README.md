@@ -19,6 +19,16 @@ bovine skin biopsy (sample 22-10), rendered in Dragonfly:
 
 ![Sweat-gland network fly-through (DL-segmented, Dragonfly 3D render)](docs/media/sweatgland_preview.gif)
 
+Full-biopsy segmentation output on sample 23-120 — hair follicles (multi-
+coloured), sweat-gland coil (purple, lower), and blood-vessel tree (purple,
+branching) — shown overlaid on the μCT tissue cylinder (left) and isolated
+(right):
+
+<p align="center">
+  <img src="docs/media/23-120_core_all_structures.png" width="49%" alt="Sample 23-120: all segmented structures overlaid on the micro-CT tissue cylinder">
+  <img src="docs/media/23-120_hair_sg_bv_composite.png" width="49%" alt="Sample 23-120: hair, sweat gland, and blood vessels isolated from the tissue">
+</p>
+
 ## Quick start
 
 1. **Clone the repository** and create a Python environment (Python ≥ 3.10).
