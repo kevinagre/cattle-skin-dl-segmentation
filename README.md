@@ -19,13 +19,66 @@ bovine skin biopsy (sample 22-10), rendered in Dragonfly:
 
 ![Sweat-gland network fly-through (DL-segmented, Dragonfly 3D render)](docs/media/sweatgland_preview.gif)
 
-Full-biopsy segmentation output on sample 23-120 — hair follicles (gray, on top), sweat-gland coil (multi-colored), and blood-vessel tree (purple,
-branching) — shown overlaid on the μCT tissue cylinder (left) and isolated
-(right):
+## Gallery
+
+Selected Dragonfly renders from the production cohort. Each image is a 3D
+volumetric rendering of structures segmented by the pipeline.
+
+### Hair-follicle segmentation
+
+The `HAIR_SegWiz_Standard_v1` model returns one Multi-ROI per follicle
+(random colour per instance).
+
+<p align="center">
+  <img src="docs/media/wizard_76_22-09_dl_v9_multiroi_side.png" width="49%" alt="Hair follicles segmented by HAIR_SegWiz_Standard_v1, angled side view (sample 22-09)">
+  <img src="docs/media/23-102_hair_multi_roi_final.png" width="49%" alt="Hair follicles segmented by HAIR_SegWiz_Standard_v1 (sample 23-102)">
+</p>
+
+### Sweat-gland segmentation
+
+The `SG_SegWiz_Standard_v1` model returns one Multi-ROI per coiled gland
+(random colour per instance).
+
+<p align="center">
+  <img src="docs/media/22-17_sg_3d.png" width="70%" alt="Sweat glands segmented by SG_SegWiz_Standard_v1 (sample 22-17)">
+</p>
+
+### Full-sample composites (hair + sweat gland + blood vessels)
+
+Combined output of the two DL models plus manual blood-vessel segmentation,
+rendered inside the 2 mm cylinder mask that defines the region of interest.
+Hair follicles sit in the dense cluster at the top of each biopsy; blood
+vessels are the large branching trees; sweat-gland coils occupy the space
+between them.
+
+Sample 23-120 — all three structures shown overlaid on the μCT tissue
+cylinder (left) and isolated (right); hair follicles (gray, on top),
+sweat-gland coil (multi-colored), blood-vessel tree (purple, branching):
 
 <p align="center">
   <img src="docs/media/23-120_core_all_structures.png" width="49%" alt="Sample 23-120: all segmented structures overlaid on the micro-CT tissue cylinder">
   <img src="docs/media/23-120_hair_sg_bv_composite.png" width="49%" alt="Sample 23-120: hair, sweat gland, and blood vessels isolated from the tissue">
+</p>
+
+Additional examples across different biopsy diameters, with the 2 mm cylinder
+mask visualised as a blue grid:
+
+<p align="center">
+  <img src="docs/media/23-114_hair_sg_bv_fullscene_pd6.00.png" width="32%" alt="Sample 23-114: full-scene composite within the cylinder mask (6 mm biopsy)">
+  <img src="docs/media/23-108_bv_sg_overview.png" width="32%" alt="Sample 23-108: overview of sweat glands and a large branching blood vessel">
+  <img src="docs/media/23-110_bv_sg_context.png" width="32%" alt="Sample 23-110: sweat glands on top with an orange blood-vessel tree inside the cylinder mask">
+</p>
+
+### Notable morphology
+
+A single elongated "snake-like" sweat-gland coil captured in isolation
+(sample 22-07, left) and a top-down view of a shallow biopsy where the
+blood-vessel tree dominates the segmentation plane alongside the sweat
+glands (sample 25-53, right):
+
+<p align="center">
+  <img src="docs/media/22-07_sg_snake_gland_closeup.png" width="49%" alt="Sample 22-07: close-up of a single elongated 'snake-like' sweat-gland coil">
+  <img src="docs/media/25-53_bv_sg_topdown.png" width="49%" alt="Sample 25-53: top-down view of blood-vessel tree and sweat glands in a shallow biopsy">
 </p>
 
 ## Quick start
